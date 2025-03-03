@@ -2,9 +2,11 @@
 # Pull the Node.js Docker image:
 FROM node:22.14.0-alpine
 
+# Set working directory
+WORKDIR /app
+
 # Copying package.json and package-lock.json files:
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY package.json ./
 
 # Install the dependencies:
 RUN npm install
@@ -16,4 +18,4 @@ COPY . .
 EXPOSE 8080
 
 # Start the application:
-CMD node server.js
+CMD ["node", "server.js"]
